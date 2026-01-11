@@ -1,0 +1,540 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="welding_station">
+    <pose>-4 -4 0.1 0 0 0</pose>
+    <static>false</static>
+    
+    <!-- ========================================== -->
+    <!-- BASE E TAVOLO -->
+    <!-- ========================================== -->
+    <link name="base">
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <mass>120.0</mass>
+        <inertia>
+          <ixx>10.0</ixx>
+          <iyy>10.0</iyy>
+          <izz>15.0</izz>
+        </inertia>
+      </inertial>
+      
+      <!-- Piano di lavoro in acciaio -->
+      <visual name="work_table">
+        <pose>0 0 0.4 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.2 0.8 0.06</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.35 0.35 0.35 1</ambient>
+          <diffuse>0.45 0.45 0.45 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Griglia fessurata sul piano -->
+      <visual name="grid_slots">
+        <pose>0 0 0.43 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.1 0.7 0.005</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.2 0.2 0.2 1</ambient>
+          <diffuse>0.3 0.3 0.3 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Gambe del tavolo -->
+      <visual name="leg_fl">
+        <pose>0.5 0.35 0.18 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.06 0.06 0.4</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.4 0.4 0.4 1</diffuse>
+        </material>
+      </visual>
+      
+      <visual name="leg_fr">
+        <pose>0.5 -0.35 0.18 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.06 0.06 0.4</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.4 0.4 0.4 1</diffuse>
+        </material>
+      </visual>
+      
+      <visual name="leg_rl">
+        <pose>-0.5 0.35 0.18 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.06 0.06 0.4</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.4 0.4 0.4 1</diffuse>
+        </material>
+      </visual>
+      
+      <visual name="leg_rr">
+        <pose>-0.5 -0.35 0.18 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.06 0.06 0.4</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.4 0.4 0.4 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Saldatrice (corpo principale) -->
+      <visual name="welder_body">
+        <pose>-0.65 0 0.65 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.35 0.5 0.4</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.85 0.45 0.1 1</ambient>
+          <diffuse>0.95 0.55 0.15 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Pannello frontale -->
+      <visual name="front_panel">
+        <pose>-0.475 0 0.65 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.005 0.48 0.38</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.15 0.15 0.15 1</ambient>
+          <diffuse>0.2 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Display LCD -->
+      <visual name="display">
+        <pose>-0.47 0 0.75 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.001 0.15 0.08</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.1 0.3 0.6 1</ambient>
+          <diffuse>0.2 0.4 0.7 1</diffuse>
+          <emissive>0.1 0.2 0.4 1</emissive>
+        </material>
+      </visual>
+      
+      <!-- Manopola regolazione corrente -->
+      <visual name="current_dial">
+        <pose>-0.47 -0.15 0.65 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.04</radius>
+            <length>0.03</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.15 0.15 0.15 1</ambient>
+          <diffuse>0.2 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Indicatore sul dial -->
+      <visual name="dial_indicator">
+        <pose>-0.465 -0.15 0.68 0 1.5708 0</pose>
+        <geometry>
+          <box>
+            <size>0.001 0.025 0.005</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.9 0.1 0.1 1</ambient>
+          <diffuse>1.0 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Pulsanti di controllo -->
+      <visual name="power_button">
+        <pose>-0.47 0.15 0.65 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.02</radius>
+            <length>0.015</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.2 0.8 0.2 1</ambient>
+          <diffuse>0.3 0.9 0.3 1</diffuse>
+          <emissive>0.1 0.4 0.1 1</emissive>
+        </material>
+      </visual>
+      
+      <!-- LED di stato -->
+      <visual name="status_led">
+        <pose>-0.47 0.1 0.58 0 1.5708 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.008</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <ambient>0.2 0.8 0.2 1</ambient>
+          <diffuse>0.3 0.9 0.3 1</diffuse>
+          <emissive>0.2 0.6 0.2 1</emissive>
+        </material>
+      </visual>
+      
+      <!-- Prese connessioni -->
+      <visual name="output_positive">
+        <pose>-0.475 0.2 0.52 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.025</radius>
+            <length>0.04</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.8 0.2 0.2 1</ambient>
+          <diffuse>0.9 0.3 0.3 1</diffuse>
+        </material>
+      </visual>
+      
+      <visual name="output_negative">
+        <pose>-0.475 -0.2 0.52 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.025</radius>
+            <length>0.04</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.15 0.15 0.15 1</ambient>
+          <diffuse>0.2 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Griglia di ventilazione -->
+      <visual name="vent_grille">
+        <pose>-0.825 0 0.65 0 1.5708 0</pose>
+        <geometry>
+          <box>
+            <size>0.001 0.4 0.3</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.15 0.15 0.15 1</ambient>
+          <diffuse>0.2 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Torcia di saldatura -->
+      <visual name="torch_holder">
+        <pose>0.3 0.3 0.55 0 0.5 0</pose>
+        <geometry>
+          <box>
+            <size>0.08 0.08 0.15</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.25 0.25 0.25 1</ambient>
+          <diffuse>0.35 0.35 0.35 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Manico torcia -->
+      <visual name="torch_handle">
+        <pose>0.35 0.28 0.58 0 0.7 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.025</radius>
+            <length>0.2</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.15 0.15 0.15 1</ambient>
+          <diffuse>0.2 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Impugnatura isolata -->
+      <visual name="torch_grip">
+        <pose>0.42 0.25 0.59 0 0.7 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.028</radius>
+            <length>0.08</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.1 1</ambient>
+          <diffuse>0.15 0.15 0.15 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Ugello torcia -->
+      <visual name="torch_nozzle">
+        <pose>0.28 0.31 0.57 0 0.7 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.015</radius>
+            <length>0.06</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.6 0.5 0.3 1</ambient>
+          <diffuse>0.7 0.6 0.4 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Punta di contatto -->
+      <visual name="contact_tip">
+        <pose>0.25 0.33 0.56 0 0.7 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.005</radius>
+            <length>0.02</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.7 0.6 0.4 1</ambient>
+          <diffuse>0.8 0.7 0.5 1</diffuse>
+          <emissive>0.1 0.1 0.05 1</emissive>
+        </material>
+      </visual>
+      
+      <!-- Grilletto -->
+      <visual name="trigger">
+        <pose>0.4 0.26 0.56 0 0.7 0.3</pose>
+        <geometry>
+          <box>
+            <size>0.015 0.04 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.8 0.2 0.2 1</ambient>
+          <diffuse>0.9 0.3 0.3 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Cavi -->
+      <visual name="power_cable">
+        <pose>-0.65 -0.3 0.5 0 0.3 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.018</radius>
+            <length>0.4</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.15 0.15 0.15 1</ambient>
+          <diffuse>0.2 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      
+      <visual name="torch_cable">
+        <pose>0.1 0.2 0.5 0 0.5 -0.5</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.012</radius>
+            <length>0.6</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.8 0.4 0.1 1</ambient>
+          <diffuse>0.9 0.5 0.15 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Bombola gas (argon/CO2) -->
+      <visual name="gas_cylinder">
+        <pose>-0.8 -0.3 0.5 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.08</radius>
+            <length>0.8</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.2 0.5 0.2 1</ambient>
+          <diffuse>0.3 0.6 0.3 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Testa bombola -->
+      <visual name="cylinder_cap">
+        <pose>-0.8 -0.3 0.91 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.06</radius>
+            <length>0.06</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.5 0.5 0.5 1</ambient>
+          <diffuse>0.6 0.6 0.6 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Valvola bombola -->
+      <visual name="valve">
+        <pose>-0.8 -0.25 0.95 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.015</radius>
+            <length>0.05</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.6 0.5 0.3 1</ambient>
+          <diffuse>0.7 0.6 0.4 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Manometro riduttore -->
+      <visual name="regulator_gauge">
+        <pose>-0.8 -0.2 0.93 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.04</radius>
+            <length>0.02</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.9 0.9 0.9 1</ambient>
+          <diffuse>0.95 0.95 0.95 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Maschera di protezione -->
+      <visual name="welding_mask">
+        <pose>0.5 -0.3 0.5 0.3 0 0.3</pose>
+        <geometry>
+          <box>
+            <size>0.25 0.2 0.15</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.15 0.15 0.15 1</ambient>
+          <diffuse>0.2 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Vetro oscurato maschera -->
+      <visual name="mask_lens">
+        <pose>0.625 -0.3 0.5 0.3 0 0.3</pose>
+        <geometry>
+          <box>
+            <size>0.002 0.12 0.08</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.05 0.15 0.05 1</ambient>
+          <diffuse>0.1 0.2 0.1 1</diffuse>
+          <emissive>0.05 0.1 0.05 1</emissive>
+        </material>
+      </visual>
+      
+      <!-- Guanti da saldatura -->
+      <visual name="glove_left">
+        <pose>0.4 -0.25 0.44 0 0 0.5</pose>
+        <geometry>
+          <box>
+            <size>0.12 0.06 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.6 0.5 0.3 1</ambient>
+          <diffuse>0.7 0.6 0.4 1</diffuse>
+        </material>
+      </visual>
+      
+      <visual name="glove_right">
+        <pose>0.35 -0.32 0.44 0 0 -0.3</pose>
+        <geometry>
+          <box>
+            <size>0.12 0.06 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.6 0.5 0.3 1</ambient>
+          <diffuse>0.7 0.6 0.4 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Morsa da banco -->
+      <visual name="vise">
+        <pose>-0.3 0.3 0.46 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.12 0.15 0.08</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.4 0.4 0.4 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Cartello di sicurezza -->
+      <visual name="warning_sign">
+        <pose>0 -0.41 0.7 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.35 0.001 0.25</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1.0 0.8 0.0 1</ambient>
+          <diffuse>1.0 0.9 0.2 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Collision -->
+      <collision name="table_collision">
+        <pose>0 0 0.4 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.2 0.8 0.06</size>
+          </box>
+        </geometry>
+      </collision>
+      
+      <collision name="welder_collision">
+        <pose>-0.65 0 0.65 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.35 0.5 0.4</size>
+          </box>
+        </geometry>
+      </collision>
+      
+      <collision name="cylinder_collision">
+        <pose>-0.8 -0.3 0.5 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.08</radius>
+            <length>0.8</length>
+          </cylinder>
+        </geometry>
+      </collision>
+    </link>
+  </model>
+</sdf>

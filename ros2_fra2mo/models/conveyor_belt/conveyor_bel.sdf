@@ -1,0 +1,436 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="conveyor_belt">
+    <pose>-5 -2 0.1 0 0 1.57</pose>
+    <static>false</static>
+    
+    <!-- ========================================== -->
+    <!-- STRUTTURA BASE -->
+    <!-- ========================================== -->
+    <link name="frame">
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <mass>150.0</mass>
+        <inertia>
+          <ixx>15.0</ixx>
+          <iyy>15.0</iyy>
+          <izz>20.0</izz>
+        </inertia>
+      </inertial>
+      
+      <!-- Base sinistra -->
+      <visual name="base_left">
+        <pose>0 0.3 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>2.5 0.08 0.08</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.9 0.5 0.1 1</ambient>
+          <diffuse>1.0 0.6 0.15 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Base destra -->
+      <visual name="base_right">
+        <pose>0 -0.3 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>2.5 0.08 0.08</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.9 0.5 0.1 1</ambient>
+          <diffuse>1.0 0.6 0.15 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Traversa anteriore -->
+      <visual name="crossbar_front">
+        <pose>1.2 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.06 0.68 0.08</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.9 0.5 0.1 1</ambient>
+          <diffuse>1.0 0.6 0.15 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Traversa posteriore -->
+      <visual name="crossbar_back">
+        <pose>-1.2 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.06 0.68 0.08</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.9 0.5 0.1 1</ambient>
+          <diffuse>1.0 0.6 0.15 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Gambe anteriori -->
+      <visual name="leg_fl">
+        <pose>1.15 0.3 -0.35 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.06 0.06 0.7</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.9 0.5 0.1 1</ambient>
+          <diffuse>1.0 0.6 0.15 1</diffuse>
+        </material>
+      </visual>
+      
+      <visual name="leg_fr">
+        <pose>1.15 -0.3 -0.35 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.06 0.06 0.7</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.9 0.5 0.1 1</ambient>
+          <diffuse>1.0 0.6 0.15 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Gambe posteriori -->
+      <visual name="leg_rl">
+        <pose>-1.15 0.3 -0.35 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.06 0.06 0.7</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.9 0.5 0.1 1</ambient>
+          <diffuse>1.0 0.6 0.15 1</diffuse>
+        </material>
+      </visual>
+      
+      <visual name="leg_rr">
+        <pose>-1.15 -0.3 -0.35 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.06 0.06 0.7</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.9 0.5 0.1 1</ambient>
+          <diffuse>1.0 0.6 0.15 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Rullo anteriore -->
+      <visual name="roller_front">
+        <pose>1.15 0 0.1 1.5708 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.08</radius>
+            <length>0.6</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.4 0.4 0.4 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Rullo posteriore -->
+      <visual name="roller_back">
+        <pose>-1.15 0 0.1 1.5708 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.08</radius>
+            <length>0.6</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.4 0.4 0.4 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Rulli di supporto intermedi -->
+      <visual name="support_roller1">
+        <pose>0.6 0 0.08 1.5708 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.04</radius>
+            <length>0.58</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.35 0.35 0.35 1</ambient>
+          <diffuse>0.45 0.45 0.45 1</diffuse>
+        </material>
+      </visual>
+      
+      <visual name="support_roller2">
+        <pose>0 0 0.08 1.5708 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.04</radius>
+            <length>0.58</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.35 0.35 0.35 1</ambient>
+          <diffuse>0.45 0.45 0.45 1</diffuse>
+        </material>
+      </visual>
+      
+      <visual name="support_roller3">
+        <pose>-0.6 0 0.08 1.5708 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.04</radius>
+            <length>0.58</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.35 0.35 0.35 1</ambient>
+          <diffuse>0.45 0.45 0.45 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Nastro (diviso in segmenti per realismo) -->
+      <visual name="belt_top">
+        <pose>0 0 0.18 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>2.3 0.55 0.015</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.15 0.15 0.15 1</ambient>
+          <diffuse>0.2 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Guide laterali -->
+      <visual name="side_guide_left">
+        <pose>0 0.28 0.22 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>2.3 0.02 0.08</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.85 0.45 0.05 1</ambient>
+          <diffuse>0.95 0.55 0.1 1</diffuse>
+        </material>
+      </visual>
+      
+      <visual name="side_guide_right">
+        <pose>0 -0.28 0.22 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>2.3 0.02 0.08</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.85 0.45 0.05 1</ambient>
+          <diffuse>0.95 0.55 0.1 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Motore elettrico -->
+      <visual name="motor">
+        <pose>-1.3 0.35 0.1 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.12</radius>
+            <length>0.25</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.2 0.3 0.2 1</ambient>
+          <diffuse>0.3 0.4 0.3 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Copertura motore -->
+      <visual name="motor_cover">
+        <pose>-1.3 0.35 0.1 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.15 0.28 0.28</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.15 0.25 0.15 1</ambient>
+          <diffuse>0.2 0.35 0.2 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Albero di trasmissione -->
+      <visual name="drive_shaft">
+        <pose>-1.15 0.25 0.1 1.5708 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.025</radius>
+            <length>0.15</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.5 0.5 0.5 1</ambient>
+          <diffuse>0.6 0.6 0.6 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Puleggia motore -->
+      <visual name="motor_pulley">
+        <pose>-1.15 0.18 0.1 1.5708 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.06</radius>
+            <length>0.05</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.4 0.4 0.4 1</ambient>
+          <diffuse>0.5 0.5 0.5 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Cinghia di trasmissione -->
+      <visual name="belt_drive">
+        <pose>-1.15 0.09 0.1 1.5708 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.015</radius>
+            <length>0.2</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.15 0.15 0.15 1</ambient>
+          <diffuse>0.2 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Pannello di controllo -->
+      <visual name="control_panel">
+        <pose>1.2 0.35 0.25 0 0.3 0</pose>
+        <geometry>
+          <box>
+            <size>0.15 0.12 0.25</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.25 0.25 0.25 1</ambient>
+          <diffuse>0.35 0.35 0.35 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Display -->
+      <visual name="display">
+        <pose>1.28 0.35 0.3 0 0.3 0</pose>
+        <geometry>
+          <box>
+            <size>0.001 0.08 0.06</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.1 0.3 0.5 1</ambient>
+          <diffuse>0.2 0.4 0.6 1</diffuse>
+          <emissive>0.1 0.2 0.3 1</emissive>
+        </material>
+      </visual>
+      
+      <!-- Pulsanti di controllo -->
+      <visual name="button_start">
+        <pose>1.27 0.4 0.23 0 0.3 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.015</radius>
+            <length>0.01</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.2 0.8 0.2 1</ambient>
+          <diffuse>0.3 0.9 0.3 1</diffuse>
+          <emissive>0.1 0.3 0.1 1</emissive>
+        </material>
+      </visual>
+      
+      <visual name="button_stop">
+        <pose>1.27 0.3 0.23 0 0.3 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.02</radius>
+            <length>0.015</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.8 0.2 0.2 1</ambient>
+          <diffuse>0.9 0.3 0.3 1</diffuse>
+          <emissive>0.3 0.1 0.1 1</emissive>
+        </material>
+      </visual>
+      
+      <!-- Spia LED -->
+      <visual name="status_led">
+        <pose>1.27 0.35 0.35 0 0.3 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.008</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <ambient>0.2 0.8 0.2 1</ambient>
+          <diffuse>0.3 0.9 0.3 1</diffuse>
+          <emissive>0.2 0.6 0.2 1</emissive>
+        </material>
+      </visual>
+      
+      <!-- Cartello "ATTENZIONE" -->
+      <visual name="warning_sign">
+        <pose>0 0 0.35 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.25 0.001 0.15</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1.0 0.8 0.0 1</ambient>
+          <diffuse>1.0 0.9 0.2 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Collision semplificata -->
+      <collision name="frame_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>2.5 0.7 0.4</size>
+          </box>
+        </geometry>
+      </collision>
+      
+      <collision name="belt_collision">
+        <pose>0 0 0.18 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>2.3 0.55 0.015</size>
+          </box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.8</mu>
+              <mu2>0.8</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+    </link>
+  </model>
+</sdf>

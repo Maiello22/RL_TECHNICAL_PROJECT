@@ -1,0 +1,379 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="drill_press">
+    <pose>-6 3 0.1 0 0 0</pose>
+    <static>false</static>
+    
+    <!-- ========================================== -->
+    <!-- BASE -->
+    <!-- ========================================== -->
+    <link name="base">
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <mass>80.0</mass>
+        <inertia>
+          <ixx>2.0</ixx>
+          <iyy>2.0</iyy>
+          <izz>3.0</izz>
+        </inertia>
+      </inertial>
+      
+      <!-- Basamento -->
+      <visual name="base_platform">
+        <geometry>
+          <box>
+            <size>0.6 0.5 0.08</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.25 0.25 0.25 1</ambient>
+          <diffuse>0.35 0.35 0.35 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Piano di lavoro -->
+      <visual name="work_table">
+        <pose>0 0 0.5 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.45 0.4 0.04</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.4 0.4 0.4 1</ambient>
+          <diffuse>0.5 0.5 0.5 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Colonna verticale -->
+      <visual name="column">
+        <pose>-0.15 0 0.75 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.06</radius>
+            <length>1.5</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.4 0.4 0.4 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Copertura colonna -->
+      <visual name="column_cover">
+        <pose>-0.15 0 0.75 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.14 0.14 1.5</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.15 0.3 0.15 1</ambient>
+          <diffuse>0.2 0.4 0.2 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Testa del trapano (corpo motore) -->
+      <visual name="motor_housing">
+        <pose>-0.15 0 1.35 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.25 0.25 0.35</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.1 0.2 0.1 1</ambient>
+          <diffuse>0.15 0.3 0.15 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Volante di regolazione -->
+      <visual name="adjustment_wheel">
+        <pose>-0.3 0 1.0 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.08</radius>
+            <length>0.03</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.15 0.15 0.15 1</ambient>
+          <diffuse>0.2 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Razze del volante -->
+      <visual name="wheel_spoke1">
+        <pose>-0.3 0.04 1.0 0 1.5708 0</pose>
+        <geometry>
+          <box>
+            <size>0.12 0.02 0.015</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.15 0.15 0.15 1</ambient>
+          <diffuse>0.2 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      
+      <visual name="wheel_spoke2">
+        <pose>-0.3 -0.04 1.0 0 1.5708 0</pose>
+        <geometry>
+          <box>
+            <size>0.12 0.02 0.015</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.15 0.15 0.15 1</ambient>
+          <diffuse>0.2 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Leva di comando -->
+      <visual name="control_lever">
+        <pose>0.05 0 1.2 0 0.5 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.015</radius>
+            <length>0.25</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.15 0.15 0.15 1</ambient>
+          <diffuse>0.2 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      
+      <visual name="lever_handle">
+        <pose>0.15 0 1.28 0 1.5708 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.025</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <ambient>0.8 0.2 0.2 1</ambient>
+          <diffuse>0.9 0.3 0.3 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Supporto mandrino -->
+      <visual name="spindle_housing">
+        <pose>-0.15 0 1.05 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.045</radius>
+            <length>0.15</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.25 0.25 0.25 1</ambient>
+          <diffuse>0.35 0.35 0.35 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Mandrino (parte rotante) -->
+      <visual name="spindle">
+        <pose>-0.15 0 0.92 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.025</radius>
+            <length>0.12</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.5 0.5 0.5 1</ambient>
+          <diffuse>0.6 0.6 0.6 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Punta trapano -->
+      <visual name="drill_bit">
+        <pose>-0.15 0 0.82 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.006</radius>
+            <length>0.08</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.8 0.8 0.8 1</diffuse>
+          <emissive>0.1 0.1 0.1 1</emissive>
+        </material>
+      </visual>
+      
+      <!-- Cono della punta -->
+      <visual name="drill_tip">
+        <pose>-0.15 0 0.78 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.003</radius>
+            <length>0.02</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.8 0.8 0.8 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Morsa sul piano di lavoro -->
+      <visual name="vise_base">
+        <pose>0.05 0 0.54 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.15 0.12 0.04</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.2 0.2 0.2 1</ambient>
+          <diffuse>0.3 0.3 0.3 1</diffuse>
+        </material>
+      </visual>
+      
+      <visual name="vise_jaw1">
+        <pose>-0.01 0 0.59 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.03 0.12 0.08</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.25 0.25 0.25 1</ambient>
+          <diffuse>0.35 0.35 0.35 1</diffuse>
+        </material>
+      </visual>
+      
+      <visual name="vise_jaw2">
+        <pose>0.08 0 0.59 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.03 0.12 0.08</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.25 0.25 0.25 1</ambient>
+          <diffuse>0.35 0.35 0.35 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Vite della morsa -->
+      <visual name="vise_screw">
+        <pose>0.035 0 0.59 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.012</radius>
+            <length>0.18</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.4 0.4 0.4 1</ambient>
+          <diffuse>0.5 0.5 0.5 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Maniglia morsa -->
+      <visual name="vise_handle">
+        <pose>0.12 0 0.59 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.008</radius>
+            <length>0.08</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.8 0.2 0.2 1</ambient>
+          <diffuse>0.9 0.3 0.3 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Pannello elettrico -->
+      <visual name="electrical_box">
+        <pose>-0.25 0.15 0.3 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.12 0.08 0.15</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.15 0.15 0.15 1</ambient>
+          <diffuse>0.2 0.2 0.2 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Pulsanti -->
+      <visual name="start_button">
+        <pose>-0.24 0.16 0.34 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.015</radius>
+            <length>0.01</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.2 0.8 0.2 1</ambient>
+          <diffuse>0.3 0.9 0.3 1</diffuse>
+          <emissive>0.1 0.3 0.1 1</emissive>
+        </material>
+      </visual>
+      
+      <visual name="stop_button">
+        <pose>-0.24 0.16 0.3 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.02</radius>
+            <length>0.015</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.8 0.2 0.2 1</ambient>
+          <diffuse>0.9 0.3 0.3 1</diffuse>
+          <emissive>0.3 0.1 0.1 1</emissive>
+        </material>
+      </visual>
+      
+      <!-- Targhetta identificativa -->
+      <visual name="nameplate">
+        <pose>-0.15 -0.071 1.4 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.15 0.001 0.06</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.9 0.85 0.7 1</ambient>
+          <diffuse>0.95 0.9 0.75 1</diffuse>
+        </material>
+      </visual>
+      
+      <!-- Collision semplificata -->
+      <collision name="base_collision">
+        <geometry>
+          <box>
+            <size>0.6 0.5 0.08</size>
+          </box>
+        </geometry>
+      </collision>
+      
+      <collision name="column_collision">
+        <pose>-0.15 0 0.75 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.15 0.15 1.5</size>
+          </box>
+        </geometry>
+      </collision>
+      
+      <collision name="table_collision">
+        <pose>0 0 0.5 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.45 0.4 0.04</size>
+          </box>
+        </geometry>
+      </collision>
+    </link>
+  </model>
+</sdf>
